@@ -16,7 +16,6 @@ public class UserAppLogin extends HttpServlet {
 		
 		// 스마트폰으로 로그인하는 기능은 여기서!
 		
-		
 		PrintWriter out = response.getWriter();
 		
 		String id = request.getParameter("id");

@@ -7,14 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.controller.Controller;
 
 
 public class FrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// 실행 여기서 시킬 것임!
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -41,7 +38,6 @@ public class FrontController extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-		
 		
 	}
 
