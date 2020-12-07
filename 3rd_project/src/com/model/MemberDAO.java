@@ -3,7 +3,7 @@ package com.model;
 import java.sql.*;
 
 public class MemberDAO {
-	java.sql.Connection conn = null;
+	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	int cnt= 0;
@@ -17,7 +17,7 @@ public class MemberDAO {
 		
 	}
 	
-	public java.sql.Connection getConn() {
+	public Connection getConn() {
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String user = "hr";
