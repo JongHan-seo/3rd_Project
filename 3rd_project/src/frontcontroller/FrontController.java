@@ -14,6 +14,8 @@ public class FrontController extends HttpServlet {
 		// RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/"+nextView+".jsp");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/main.html");
 		rd.forward(request, response);
+		
+		// 김병길입니다.
 	}
 
 }
