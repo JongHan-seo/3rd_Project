@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 실행 여기서 시킬 것임!
+		
 		// RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/"+nextView+".jsp");
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/main.html");
 		rd.forward(request, response);
 		
-		// 김병길입니다.
 	}
 
 }
