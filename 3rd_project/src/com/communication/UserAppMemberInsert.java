@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AppLogin")
-public class UserAppLogin extends HttpServlet {
-
+@WebServlet("/AppInsert")
+public class UserAppMemberInsert extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 스마트폰으로 로그인하는 기능은 여기서! (스마트폰의 기능에는 .do를 붙이지 말 것!)
+		// 스마트폰으로 회원가입(회원가입 성공시 cnt 1반환, 아니면 -1반환)
 		
 		PrintWriter out = response.getWriter();
 		
@@ -23,8 +22,7 @@ public class UserAppLogin extends HttpServlet {
 		
 		System.out.println(id + "/" + pw);
 		
-		out.print("true");
-		
+		out.print("HI");
 	}
 
 }

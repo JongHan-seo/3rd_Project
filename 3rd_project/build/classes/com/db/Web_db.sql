@@ -6,6 +6,8 @@ serialcode varchar2(20),
 address varchar2(20),
 phoneNumber	varchar2(20));
 
+insert into MEMBER(id, pw, serialcode) values('송승룡','1234','abc');
+select * from member;
 
 drop table member cascade constraints;
 

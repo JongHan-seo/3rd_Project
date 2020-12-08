@@ -16,8 +16,9 @@
 					<nav id="nav">
 						<a href="#" class="icon solid fa-home"><span>Home</span></a>
 						<a href="#work" class="icon solid fa-folder"><span>Work</span></a>
+						<a href="#test" class="icon solid fa-folder"><span>Test</span></a>
 						<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
-						<a href="https://twitter.com/ajlkn" class="icon brands fa-twitter"><span>Twitter</span></a>
+						<a href="https://twitter.com" class="icon brands fa-twitter"><span>Twitter</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -26,8 +27,28 @@
 						<!-- Me -->
 							<article id="home" class="panel intro">
 								<header>
-									<h1>나래궁</h1>
-									<p>스마트 케어 봇</p>
+									<h1>스마트 케어 봇</h1>
+									<p>팀 나래궁</p>
+									<form action="#" method="post">
+									<div>
+										<div class="row">
+											<div class="col-6 col-12-medium">
+												<input type="text" name="id" placeholder="ID" />
+											</div>
+											<div class="col-6 col-12-medium">
+												<input type="text" name="pw" placeholder="PassWord" />
+											</div>
+											<div class="col-12">
+												<input type="text" name="subject" placeholder="길이 조절용" />
+											</div>
+											<div class="col-12">
+												<input type="submit" value="로그인" />
+												<input type="button" value="회원가입" />
+											</div>
+										</div>
+									</div>
+								</form>
+								
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
@@ -38,12 +59,10 @@
 						<!-- Work -->
 							<article id="work" class="panel">
 								<header>
-									<h2>Work</h2>
+									<h2>저장된 영상 보기</h2>
 								</header>
 								<p>
-									Phasellus enim sapien, blandit ullamcorper elementum eu, condimentum eu elit.
-									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-									luctus elit eget interdum.
+									움직임이 감지된 보안 영상을 여기서 보면 되려나..?
 								</p>
 								<section>
 									<div class="row">
@@ -90,30 +109,27 @@
 						<!-- Contact -->
 							<article id="contact" class="panel">
 								<header>
-									<h2>Contact Me</h2>
+									<h2>CCTV 실시간 보기는 이쪽에서</h2>
 								</header>
-								<form action="#" method="post">
-									<div>
-										<div class="row">
-											<div class="col-6 col-12-medium">
-												<input type="text" name="name" placeholder="Name" />
-											</div>
-											<div class="col-6 col-12-medium">
-												<input type="text" name="email" placeholder="Email" />
-											</div>
-											<div class="col-12">
-												<input type="text" name="subject" placeholder="Subject" />
-											</div>
-											<div class="col-12">
-												<textarea name="message" placeholder="Message" rows="6"></textarea>
-											</div>
-											<div class="col-12">
-												<input type="submit" value="Send Message" />
-											</div>
-										</div>
-									</div>
-								</form>
+								<div>CCTV 영상</div>
 							</article>
+							
+							<!-- test -->
+							
+							<article id="test" class="panel">
+								<header>
+									<h2>화재 or 유해가스 정보</h2>
+								</header>
+								<p>
+									여기서 센서로 읽어들인 값들 그래프로 보여주면 될 듯
+								</p>
+								<section>
+									<div class="row">
+										<div>그래프</div>
+									</div>
+								</section>
+							</article>
+							
 
 					</div>
 
