@@ -1,23 +1,36 @@
 package com.model;
 
 public class MemberDTO {
+	private String name;
+	private String phoneNumber;
 	private String id;
 	private String pw;
-	private String name;
-	private String address;
-	private String serialcode;
-	private String phoneNumber;
-	
-	
-	public MemberDTO() {   }
-	
-	public MemberDTO(String id, String pw, String name, String address, String serialcode, String phoneNumber) {
+
+	public MemberDTO() {
 		super();
+	}
+
+	public MemberDTO(String name, String phoneNumber, String id, String pw) {
+		super();
+		this.name = name;
+		this.phoneNumber = phoneNumber;
 		this.id = id;
 		this.pw = pw;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
-		this.address = address;
-		this.serialcode = serialcode;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -36,48 +49,5 @@ public class MemberDTO {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getSerialcode() {
-		return serialcode;
-	}
-
-	public void setSerialcode(String serialcode) {
-		this.serialcode = serialcode;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
 
 }
