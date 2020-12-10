@@ -9,6 +9,8 @@ import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class App {
     private FirebaseOptions option;
@@ -38,11 +40,22 @@ public class App {
         db = FirestoreClient.getFirestore();
     }
     
-    
+   JsonObject json;
+   JsonParser parser;
+   String result = null;
+   
    public void select(){    // 조회
         db.collection(COLLECTION_NAME).addSnapshotListener( (target, exception)->{
             target.forEach( item->{
                 System.out.println("primary id : "+item.getId() + "  ||  value : " + item.getData());
+                result = item.getData().toString();
+                
+                if(result != null) {
+    				json = (JsonObject) parser.parseString(result);
+    				
+    				System.out.println(json.get("arr"));
+    			}
+                
             });
         });
     }
