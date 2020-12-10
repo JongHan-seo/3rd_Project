@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class SencingDAO {Connection conn = null;
 PreparedStatement ps = null;
 ResultSet rs = null;
-SencingDTO dto;
+SencingDTO sdto;
 int cnt = 0;
 
 static {
@@ -74,5 +74,29 @@ public int sign(SencingDTO dto) {
 	return cnt;
 
 }
+
+public void insert(String gas, String temp, String water) {
+	conn = getConn();
+
+	String sql = "insert into sensing(gas, temp, water) values(?,?,?)";
+
+	try {
+		ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, gas);
+		ps.setString(2, temp);
+		ps.setString(3, water);
+
+		cnt = ps.executeUpdate();
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+
+}
+
+
+
 
 }
