@@ -28,7 +28,8 @@ section, summary, time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
-	opacity: 100%;}
+	/* opacity: 100%; */
+	}
 
 body {
 	line-height: 1;
@@ -1954,7 +1955,9 @@ input, select, textarea {
 		-webkit-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
 		-ms-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
 		transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
-		opacity: 0.5;
+		/* 	배경색 투명하게 만드는 코드 아래 */
+		background-color: rgba( 255, 255, 255, 0.5 );
+				
 	}
 
 		#main > .panel {
@@ -1966,6 +1969,7 @@ input, select, textarea {
 			position: relative;
 			padding: 3.5em 2.5em 2.5em 2.5em;
 			width: 100%;
+			opacity: 1;
 		}
 
 			#main > .panel.inactive {
@@ -2012,16 +2016,16 @@ input, select, textarea {
 					height: 100%;
 				}
 
-					#main > .panel.intro .pic:before {
+ 					#main > .panel.intro .pic:before {
 						content: '';
 						position: absolute;
 						top: 0;
 						left: 0;
-						background: url("images/overlay.png");
+						background: url("images/overlay.png"); 
 						width: 100%;
 						height: 100%;
 						z-index: 1;
-					}
+					} 
 
 					#main > .panel.intro .pic img {
 						position: relative;
@@ -2060,6 +2064,7 @@ input, select, textarea {
 						-webkit-transition: width .15s ease-in-out, padding-right .15s ease-in-out;
 						-ms-transition: width .15s ease-in-out, padding-right .15s ease-in-out;
 						transition: width .15s ease-in-out, padding-right .15s ease-in-out;
+						
 					}
 
 						#main > .panel.intro .pic .arrow:before {

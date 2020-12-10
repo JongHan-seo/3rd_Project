@@ -34,15 +34,4 @@ public class SencingDTO {
 		this.feedtime = feedtime;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
 }

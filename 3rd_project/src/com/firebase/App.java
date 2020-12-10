@@ -41,11 +41,9 @@ public class App {
     
    public void select(){    // 조회
         db.collection(COLLECTION_NAME).addSnapshotListener( (target, exception)->{
-            System.out.println(" - select start - ");
             target.forEach( item->{
                 System.out.println("primary id : "+item.getId() + "  ||  value : " + item.getData());
             });
-            System.out.println(" - select end - ");
         });
     }
     
