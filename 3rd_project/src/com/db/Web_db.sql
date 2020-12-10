@@ -12,12 +12,11 @@ select * from member;
 drop table member cascade constraints;
 
 create table sencing( 	
-NH3 varchar2(20),
-NOx varchar2(20),
-alcohol varchar2(20),
-Benzene varchar2(20),
+nh3 varchar2(20),
+nox varchar2(20),
+benzene varchar2(20),
 smoke varchar2(20),
-CO2 varchar2(20)
+co2 varchar2(20)
 feeding varchar2(4),
 feedtime date
 );
