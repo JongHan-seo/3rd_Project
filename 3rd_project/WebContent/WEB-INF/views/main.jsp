@@ -9,6 +9,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="./assets/css/noscript.css" /></noscript>
+		
+		
 </head>
 <body class="is-preload" >
 
@@ -29,9 +31,9 @@
 
 						<!-- Me -->
 							<article id="home" class="panel intro">
-								<header>
-									<h1>스마트 케어 봇</h1>
-								<!-- 	<p>팀 나래궁</p> -->
+							 	<header>
+									<h1 id = "h1test">스마트 케어 봇</h1>
+									<p>팀 나래궁</p>
 									<form action="#" method="post">
 									<div>
 										<div class="row">
@@ -51,13 +53,14 @@
 										</div>
 									</div>
 								</form>
-								
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
 									<img src="./images/me.jpg" alt="" />
 								</a>
 							</article>
+							
+							
 
 						<!-- Work -->
 							<article id="work" class="panel">
