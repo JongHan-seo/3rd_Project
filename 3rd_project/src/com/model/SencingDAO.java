@@ -54,18 +54,15 @@ public void close() {
 public int sign(SencingDTO dto) {
 	conn = getConn();
 
-	String sql = "insert into sensing values(?,?,?,?,?,?,?)";
+	String sql = "insert into sensing values(?,?,?)";
 
 	try {
 		ps = conn.prepareStatement(sql);
 
-		ps.setString(1, dto.getNh3());
-		ps.setString(2, dto.getNox());
-		ps.setString(3, dto.getBenzene());
-		ps.setString(4, dto.getSmoke());
-		ps.setString(5, dto.getCo2());
-		ps.setString(6, dto.getFeeding());
-		ps.setString(7, dto.getFeedtime());
+		
+		ps.setString(1, dto.getGas());
+		ps.setString(2, dto.getFeeding());
+		ps.setString(3, dto.getFeedtime());
 
 		cnt = ps.executeUpdate();
 
