@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <% 
+	String ctx = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,31 +35,36 @@
 								<header>
 									<h1>스마트 케어 봇</h1>
 								<!-- 	<p>팀 나래궁</p> -->
-									<form action="#" method="post">
+									<form action="joinController" method="post">
 									<div>
 										<div class="row">
 											<div class="col-6 col-12-medium">
 												<input type="text" name="id" placeholder="ID" />
 											</div>
+											<br>
+											<div class="col-6 col-12-medium">
+											<br>
+											</div>
 											<div class="col-6 col-12-medium">
 												<input type="text" name="pw" placeholder="PassWord" />
 											</div>
-											<div class="col-12">
+											<br>
+											<!-- <div class="col-12">
 												<input type="text" name="subject" placeholder="길이 조절용" />
-											</div>
+											</div> -->
 											<div class="col-12">
 												<input type="submit" value="로그인" />
-												<input type="button" value="회원가입" />
+												<input type="button" value="회원가입" onclick="location.href='<%=ctx%>/join.do'"/>
 											</div>
 										</div>
 									</div>
 								</form>
 								
 								</header>
-								<a href="#work" class="jumplink pic">
+								<!-- <a href="#work" class="jumplink pic">
 									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
 									<img src="./images/me.jpg" alt="" />
-								</a>
+								</a> -->
 							</article>
 
 						<!-- Work -->
