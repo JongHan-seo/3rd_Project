@@ -9,8 +9,6 @@ import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.model.SencingDAO;
 
 public class App {
@@ -41,24 +39,17 @@ public class App {
         db = FirestoreClient.getFirestore();
     }
     
-   JsonObject json;
-   JsonParser parser;
-   String result = null;
    SencingDAO sdao = new SencingDAO();
-   
    
    public void select(){    // 조회
         db.collection(COLLECTION_NAME).addSnapshotListener( (target, exception)->{
             target.forEach( item->{
                 System.out.println("primary id : "+item.getId() + "  ||  value : " + item.getData());
-                result = item.getData().toString();
+                String gas = item.getData().get("gas").toString();
+                String water = item.getData().get("water").toString();
+                String temp = item.getData().get("temp").toString();
                 
-                if(result != null) {
-    				json = (JsonObject) parser.parseString(result);
-    				
-    				// String gas = json.get("gas");
-    				// sdao.insert(json.get("gas"), json.get("temp"), json.get("water"));
-    			}
+                
                 
             });
         });
