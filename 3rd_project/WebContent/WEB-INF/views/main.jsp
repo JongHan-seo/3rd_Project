@@ -1,7 +1,14 @@
+<%@page import="com.model.SencingDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.SencingDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% 
 	String ctx = request.getContextPath();
+    SencingDAO sdao = new SencingDAO();
+    ArrayList<SencingDTO> list = new ArrayList<>();
+    list = sdao.readData();
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -12,6 +19,38 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="./assets/css/noscript.css" /></noscript>
+		
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        	['Time', 'Temp']
+        	<%
+        		for (SencingDTO sdto : list) {
+        	%>
+        	
+        	,[<%= sdto.getCount()%>, <%= sdto.getTemp()%>]
+          
+          <% }%>
+        ]);
+
+        var options = {
+          title: '실내 온도',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+		
+		
+		
 </head>
 <body class="is-preload" >
 
@@ -131,6 +170,7 @@
 								<header>
 									<h2>화재 or 유해가스 정보</h2>
 								</header>
+								<div id="curve_chart" style="width: 900px; height: 500px"></div>
 								<p>
 									여기서 센서로 읽어들인 값들 그래프로 보여주면 될 듯
 								</p>
