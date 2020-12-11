@@ -49,7 +49,7 @@ public class App {
                 String water = item.getData().get("water").toString();
                 String temp = item.getData().get("temp").toString();
                 
-                
+                sdao.insert(gas, temp, water);
                 
             });
         });

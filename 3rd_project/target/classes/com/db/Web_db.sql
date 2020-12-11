@@ -18,3 +18,8 @@ water varchar2(20),
 feeding varchar2(4),
 feedtime date
 );
+
+select * from sencing;
+
+
+drop table sencing;

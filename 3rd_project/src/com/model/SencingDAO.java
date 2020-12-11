@@ -54,7 +54,7 @@ public void close() {
 public int sign(SencingDTO dto) {
 	conn = getConn();
 
-	String sql = "insert into sensing values(?,?,?)";
+	String sql = "insert into sencing values(?,?,?)";
 
 	try {
 		ps = conn.prepareStatement(sql);
@@ -78,7 +78,7 @@ public int sign(SencingDTO dto) {
 public void insert(String gas, String temp, String water) {
 	conn = getConn();
 
-	String sql = "insert into sensing(gas, temp, water) values(?,?,?)";
+	String sql = "insert into sencing(gas, temp, water) values(?,?,?)";
 
 	try {
 		ps = conn.prepareStatement(sql);
