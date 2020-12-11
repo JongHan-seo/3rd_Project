@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class SencingDAO {Connection conn = null;
 PreparedStatement ps = null;
 ResultSet rs = null;
-SencingDTO dto;
+SencingDTO sdto;
 int cnt = 0;
 
 static {
@@ -54,18 +54,15 @@ public void close() {
 public int sign(SencingDTO dto) {
 	conn = getConn();
 
-	String sql = "insert into sensing values(?,?,?,?,?,?,?)";
+	String sql = "insert into sencing values(?,?,?)";
 
 	try {
 		ps = conn.prepareStatement(sql);
 
-		ps.setString(1, dto.getNh3());
-		ps.setString(2, dto.getNox());
-		ps.setString(3, dto.getBenzene());
-		ps.setString(4, dto.getSmoke());
-		ps.setString(5, dto.getCo2());
-		ps.setString(6, dto.getFeeding());
-		ps.setString(7, dto.getFeedtime());
+		
+		ps.setString(1, dto.getGas());
+		ps.setString(2, dto.getFeeding());
+		ps.setString(3, dto.getFeedtime());
 
 		cnt = ps.executeUpdate();
 
@@ -77,5 +74,29 @@ public int sign(SencingDTO dto) {
 	return cnt;
 
 }
+
+public void insert(String gas, String temp, String water) {
+	conn = getConn();
+
+	String sql = "insert into sencing(gas, temp, water) values(?,?,?)";
+
+	try {
+		ps = conn.prepareStatement(sql);
+		
+		ps.setString(1, gas);
+		ps.setString(2, temp);
+		ps.setString(3, water);
+
+		cnt = ps.executeUpdate();
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+
+}
+
+
+
 
 }
