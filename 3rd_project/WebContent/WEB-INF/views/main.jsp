@@ -168,11 +168,12 @@
 							
 							<article id="test" class="panel">
 								<header>
-									<h2>화재 or 유해가스 정보</h2>
+									<h2>실내 정보</h2>
 								</header>
 								<div id="curve_chart" style="width: 900px; height: 500px"></div>
 								<p>
-									여기서 센서로 읽어들인 값들 그래프로 보여주면 될 듯
+									여기서 센서로 읽어들인 값들 그래프로 보여주면 될 듯.<br>
+									화재 or 유해가스 등
 								</p>
 								<section>
 									<div class="row">
