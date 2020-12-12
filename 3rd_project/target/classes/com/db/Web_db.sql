@@ -26,3 +26,4 @@ select * from sencing;
 drop table sencing;
 
 create sequence count_seq;
+drop sequence count_seq;
