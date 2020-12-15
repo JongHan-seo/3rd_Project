@@ -11,15 +11,19 @@ select * from member;
 
 drop table member cascade constraints;
 
-create table sencing( 	
+create table sencing(
+count varchar2(20),
 gas varchar2(20),
 temp varchar2(20),
 water varchar2(20),
 feeding varchar2(4),
-feedtime date
+uptime varchar2(20)
 );
 
 select * from sencing;
 
 
 drop table sencing;
+
+create sequence count_seq;
+drop sequence count_seq;

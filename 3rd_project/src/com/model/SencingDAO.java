@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class SencingDAO {Connection conn = null;
 PreparedStatement ps = null;
@@ -62,7 +63,7 @@ public int sign(SencingDTO dto) {
 		
 		ps.setString(1, dto.getGas());
 		ps.setString(2, dto.getFeeding());
-		ps.setString(3, dto.getFeedtime());
+		ps.setString(3, dto.getUptime());
 
 		cnt = ps.executeUpdate();
 
@@ -78,7 +79,7 @@ public int sign(SencingDTO dto) {
 public void insert(String gas, String temp, String water) {
 	conn = getConn();
 
-	String sql = "insert into sencing(gas, temp, water) values(?,?,?)";
+	String sql = "insert into sencing(gas, temp, water, count) values(?,?,?,count_seq.nextval)";
 
 	try {
 		ps = conn.prepareStatement(sql);
@@ -93,6 +94,33 @@ public void insert(String gas, String temp, String water) {
 	} finally {
 		close();
 	}
+
+}
+
+
+String temp = null;
+
+public ArrayList<SencingDTO> readData() {
+	conn = getConn();
+	String sql = "select * from sencing";
+	ArrayList<SencingDTO> list = new ArrayList<>();
+	
+	try {
+		ps = conn.prepareStatement(sql);
+		rs = ps.executeQuery();
+
+		while (rs.next()) {
+			sdto = new SencingDTO();
+			sdto.setCount(rs.getString("count"));
+			sdto.setTemp(rs.getString("temp"));
+			list.add(sdto);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+	return list;
 
 }
 
