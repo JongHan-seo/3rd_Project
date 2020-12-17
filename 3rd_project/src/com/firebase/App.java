@@ -50,7 +50,7 @@ public class App {
                 String temp = item.getData().get("temp").toString();
                 String uptime = item.getData().get("uptime").toString();
                 
-                sdao.insert(gas, temp, water);
+                sdao.insert(gas, temp, water,uptime);
                 
             });
         });

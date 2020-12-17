@@ -31,8 +31,8 @@
         		for (SencingDTO sdto : list) {
         	%>
         	
-        	,[<%= sdto.getCount()%>, <%= sdto.getTemp()%>]
-          
+        	,['<%= sdto.getUptime().substring(2)%>', <%= sdto.getTemp()%>]
+          // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
         ]);
 
