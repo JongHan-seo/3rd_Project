@@ -22,6 +22,7 @@ upsys date
 );
 
 select * from(select * from(select gas,temp,water,uptime from sencing order by upsys desc) where rownum <= 10) order by rownum desc;
+delete from sencing where gas is null;
 
 
 drop table sencing;
