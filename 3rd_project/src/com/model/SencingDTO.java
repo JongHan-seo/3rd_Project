@@ -2,12 +2,12 @@ package com.model;
 
 public class SencingDTO {
 	
-	private String count;
 	private String gas;
 	private String temp;
 	private String water;
 	private String feeding; 
 	private String uptime;
+	private String upsys;
 
 	
 	public SencingDTO() {	}
@@ -26,13 +26,16 @@ public class SencingDTO {
 		this.feeding = feeding;
 		this.uptime = uptime;
 	}
+	
 
-	public String getCount() {
-		return count;
-	}
-
-	public void setCount(String count) {
-		this.count = count;
+	public SencingDTO(String gas, String temp, String water, String feeding, String uptime, String upsys) {
+		super();
+		this.gas = gas;
+		this.temp = temp;
+		this.water = water;
+		this.feeding = feeding;
+		this.uptime = uptime;
+		this.upsys = upsys;
 	}
 
 	public String getGas() {
@@ -75,7 +78,12 @@ public class SencingDTO {
 		this.uptime = uptime;
 	}
 
-	
-	
-	
+	public String getUpsys() {
+		return upsys;
+	}
+
+	public void setUpsys(String upsys) {
+		this.upsys = upsys;
+	}
+
 }

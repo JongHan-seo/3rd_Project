@@ -8,7 +8,6 @@
     SencingDAO sdao = new SencingDAO();
     ArrayList<SencingDTO> list = new ArrayList<>();
     list = sdao.readData();
-    
 %>
 
 
@@ -30,26 +29,80 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-<%--         var data = google.visualization.arrayToDataTable([
+        var data1 = google.visualization.arrayToDataTable([
         	['Time', 'Temp']
         	<%
         		for (SencingDTO sdto : list) {
         	%>
         	
-        	,[<%= sdto.getCount()%>, <%= sdto.getTemp()%>]
-          
+        	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getTemp()%>]
+          // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
         ]); --%>
 
-        var options = {
+        var options1 = {
           title: '실내 온도',
-          curveType: 'function',
-          legend: { position: 'bottom' }
+          vAxis: {minValue: 0, maxValue: 40},
+          legend: { position: 'top' },
+          series: {
+              0: { color: '#F15F5F' }
+          },
+          width: 900,
+          height: 500
         };
+        
+        var data2 = google.visualization.arrayToDataTable([
+        	['Time', 'Water']
+        	<%
+        		for (SencingDTO sdto : list) {
+        	%>
+        	
+        	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getWater()%>]
+          // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
+          <% }%>
+        ]);
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var options2 = {
+          title: '실내 습도',
+          legend: { position: 'top' },
+          width: 900,
+          height: 500
+        };
+        
+        
+        
+        
+        var data3 = google.visualization.arrayToDataTable([
+        	['Time', 'Gas']
+        	<%
+        		for (SencingDTO sdto : list) {
+        	%>
+        	
+        	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getGas()%>]
+          // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
+          <% }%>
+        ]);
 
-        chart.draw(data, options);
+        var options3 = {
+          title: '유해가스',
+          vAxis: {minValue: 0, maxValue: 900},
+          legend: { position: 'top' },
+          series: {
+              0: { color: '#8C8C8C' }
+          },
+          width: 900,
+          height: 500
+        };
+        
+        var chart1 = new google.visualization.AreaChart(document.getElementById('curve_chart1'));
+        var chart2 = new google.visualization.AreaChart(document.getElementById('curve_chart2'));
+        var chart3 = new google.visualization.AreaChart(document.getElementById('curve_chart3'));
+        
+        chart1.draw(data1, options1);
+        chart2.draw(data2, options2);
+        chart3.draw(data3, options3);
+        
+        
       }
     </script>
 		
@@ -174,7 +227,9 @@
 								<header>
 									<h2>실내 정보</h2>
 								</header>
-								<div id="curve_chart" style="width: 900px; height: 500px"></div>
+								<div id="curve_chart1"></div>
+								<div id="curve_chart2"></div>
+								<div id="curve_chart3"></div>
 								<p>
 									여기서 센서로 읽어들인 값들 그래프로 보여주면 될 듯.<br>
 									화재 or 유해가스 등
@@ -202,6 +257,7 @@
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+
 
 	</body>
 </html>

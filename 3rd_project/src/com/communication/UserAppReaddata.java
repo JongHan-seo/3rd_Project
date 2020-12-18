@@ -13,25 +13,27 @@ import javax.servlet.http.HttpServletResponse;
 import com.model.SencingDAO;
 import com.model.SencingDTO;
 
-@WebServlet("/AppLogin")
-public class UserAppLogin extends HttpServlet {
-
+@WebServlet("/AppData")
+public class UserAppReaddata extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 스마트폰으로 로그인하는 기능은 여기서! (스마트폰의 기능에는 .do를 붙이지 말 것!)
-		
-		PrintWriter out = response.getWriter();
+		// data 10개 보내기
 		SencingDAO sdao = new SencingDAO();
 		SencingDTO sdtp = new SencingDTO();
+		
+		PrintWriter out = response.getWriter();
+		
+		String data = request.getParameter("data");
 		ArrayList<SencingDTO> readData;
+		
 		readData = sdao.readData();
+		String a = "";
+		for(int i = 0; i <= 9; i++) {
+			a+= readData.get(i).getGas()+":"+readData.get(i).getTemp()+":"+readData.get(i).getWater()+":"+readData.get(i).getUptime()+":";
+		}
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+		out.print(a);
 		
-		System.out.println(id + "/" + pw);
-		
-		out.print("true");
 	}
 
 }
