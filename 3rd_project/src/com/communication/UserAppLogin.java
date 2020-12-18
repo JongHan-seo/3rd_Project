@@ -31,14 +31,7 @@ public class UserAppLogin extends HttpServlet {
 		
 		System.out.println(id + "/" + pw);
 		
-		// out.print("true");
-		String a = "";
-		for(int i = 0; i <= 9; i++) {
-			a+= readData.get(i).getGas()+":"+readData.get(i).getTemp()+":"+readData.get(i).getWater()+":"+readData.get(i).getUptime()+":";
-		}
-		
-		out.print(a);
-		
+		out.print("true");
 	}
 
 }
