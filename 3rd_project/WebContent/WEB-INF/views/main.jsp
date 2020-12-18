@@ -10,6 +10,10 @@
     list = sdao.readData();
     
 %>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +30,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
+<%--         var data = google.visualization.arrayToDataTable([
         	['Time', 'Temp']
         	<%
         		for (SencingDTO sdto : list) {
@@ -35,7 +39,7 @@
         	,[<%= sdto.getCount()%>, <%= sdto.getTemp()%>]
           
           <% }%>
-        ]);
+        ]); --%>
 
         var options = {
           title: '실내 온도',
