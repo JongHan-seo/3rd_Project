@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.MemberDAO;
 import com.model.SencingDAO;
 import com.model.SencingDTO;
 
@@ -23,6 +24,8 @@ public class UserAppLogin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		SencingDAO sdao = new SencingDAO();
 		SencingDTO sdtp = new SencingDTO();
+		MemberDAO mdao = new MemberDAO();
+		
 		ArrayList<SencingDTO> readData;
 		readData = sdao.readData();
 		
@@ -31,7 +34,19 @@ public class UserAppLogin extends HttpServlet {
 		
 		System.out.println(id + "/" + pw);
 		
-		out.print("true");
+		int check = mdao.idcheck(id, pw);
+				
+		if(check == 0) {
+			out.print("false");
+		}else {
+			String a = "";
+			for(int i = 0; i <= 9; i++) {
+				a+= readData.get(i).getUptime()+":"+readData.get(i).getGas()+":"+readData.get(i).getTemp()+":"+readData.get(i).getWater()+":";
+			}
+			System.out.println(a);
+			out.print(a);
+		}
+		
 	}
 
 }

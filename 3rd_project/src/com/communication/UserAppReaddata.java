@@ -29,9 +29,9 @@ public class UserAppReaddata extends HttpServlet {
 		readData = sdao.readData();
 		String a = "";
 		for(int i = 0; i <= 9; i++) {
-			a+= readData.get(i).getGas()+":"+readData.get(i).getTemp()+":"+readData.get(i).getWater()+":"+readData.get(i).getUptime()+":";
+			a+= readData.get(i).getUptime()+":"+readData.get(i).getGas()+":"+readData.get(i).getTemp()+":"+readData.get(i).getWater()+":";
 		}
-		
+		System.out.println(a);
 		out.print(a);
 		
 	}
