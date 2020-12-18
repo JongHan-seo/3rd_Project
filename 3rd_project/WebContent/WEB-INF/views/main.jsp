@@ -38,7 +38,7 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getTemp()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
-        ]); --%>
+        ]);
 
         var options1 = {
           title: '실내 온도',
@@ -165,22 +165,26 @@
 
 						<!-- Work -->
 							<article id="work" class="panel">
+							 
+										
 								<header>
 									<h2>저장된 영상 보기</h2>
 								</header>
 								<p>
-									움직임이 감지된 보안 영상을 여기서 보면 되려나..?
+									
 								</p>
 								<section>
-									<div class="row">
+								 	<div class="row">
 										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="./images/pic01.jpg" alt=""></a>
+										<video class="a" src ="./video/video.mp4" controls></video> 
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="./images/pic02.jpg" alt=""></a>
+											<video class="a" src ="./video/video.mp4" controls></video>
+											<!-- <a href="#" class="image fit"><img src="./images/pic02.jpg" alt=""></a> -->
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="./images/pic03.jpg" alt=""></a>
+											<video class="a" src ="./video/video.mp4" controls></video>
+											<!-- <a href="#" class="image fit"><img src="./images/pic03.jpg" alt=""></a> -->
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="./images/pic04.jpg" alt=""></a>
@@ -209,8 +213,8 @@
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="./images/pic12.jpg" alt=""></a>
 										</div>
-									</div>
-								</section>
+									</div> 
+								</section> 
 							</article>
 
 						<!-- Contact -->
@@ -218,7 +222,7 @@
 								<header>
 									<h2>CCTV 실시간 보기는 이쪽에서</h2>
 								</header>
-								<div>CCTV 영상</div>
+								<iframe class ="frame" src="https://dbcut.com/" ></iframe>
 							</article>
 							
 							<!-- test -->
