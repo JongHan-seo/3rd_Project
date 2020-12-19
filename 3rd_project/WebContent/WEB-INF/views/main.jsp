@@ -222,6 +222,8 @@
 								<header>
 									<h2>CCTV 실시간 보기는 이쪽에서</h2>
 								</header>
+								<div><a href = http://192.168.137.244:8081/>CCTV 보기</a></div>
+								<!-- <iframe class ="frame" src="http://192.168.137.244:8081/" ></iframe> -->
 								<iframe class ="frame" src="https://dbcut.com/" ></iframe>
 							</article>
 							
