@@ -2,20 +2,24 @@ package com.model;
 
 public class MemberDTO {
 	private String name;
-	private String phoneNumber;
+	private String phon;
+	private String address;
 	private String id;
 	private String pw;
+	private String rpw;
 
 	public MemberDTO() {
 		super();
 	}
 
-	public MemberDTO(String name, String phoneNumber, String id, String pw) {
+	public MemberDTO(String name, String phone, String address, String id, String pw, String rpw) {
 		super();
 		this.name = name;
-		this.phoneNumber = phoneNumber;
+		this.phon = phone;
+		this.address = address;
 		this.id = id;
 		this.pw = pw;
+		this.rpw = rpw;
 	}
 
 	public String getName() {
@@ -26,12 +30,20 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getPhon() {
+		return phon;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhone(String phon) {
+		this.phon = phon;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getId() {

@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.MemberDAO;
+
 @WebServlet("/AppLogin")
 public class UserAppLogin extends HttpServlet {
+	MemberDAO dao = new MemberDAO();
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -22,8 +25,9 @@ public class UserAppLogin extends HttpServlet {
 		String pw = request.getParameter("pw");
 		
 		System.out.println(id + "/" + pw);
+		boolean check = dao.login(id,pw);
 		
-		out.print("true");
+		out.print(check);
 		
 	}
 

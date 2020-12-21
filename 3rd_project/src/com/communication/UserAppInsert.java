@@ -18,18 +18,22 @@ public class UserAppInsert extends HttpServlet {
 			throws ServletException, IOException {
 
 		String name = request.getParameter("name");
-		String phoneNumber = request.getParameter("pin");
+		String phon = request.getParameter("phon");
+		String address = request.getParameter("address");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 
 		System.out.println(name);
+		System.out.println(phon);
+		System.out.println(address);
 		System.out.println(id);
 		System.out.println(pw);
 		
 		MemberDTO dto = new MemberDTO();
 
 		dto.setName(name);
-		dto.setPhoneNumber(phoneNumber);
+		dto.setPhone(phon);
+		dto.setAddress(address);
 		dto.setId(id);
 		dto.setPw(pw);
 

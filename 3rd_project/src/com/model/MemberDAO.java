@@ -3,12 +3,13 @@ package com.model;
 import java.sql.*;
 
 public class MemberDAO {
+	
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	MemberDTO dto;
 	int cnt = 0;
-	
+
 	static {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -74,25 +75,25 @@ public class MemberDAO {
 
 	String name = null;
 
-	public String login(MemberDTO dto) {
+	public boolean login(String id, String pw) {
 		conn = getConn();
 		String sql = "select name from member where id=? and pw=?";
 
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, dto.getId());
-			ps.setString(2, dto.getPw());
+			ps.setString(1, id);
+			ps.setString(2, pw);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				name = rs.getString("name");
+				return true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			close();
 		}
-		return name;
+		return false;
 
 	}
 
@@ -150,7 +151,7 @@ public class MemberDAO {
 
 		try {
 			// ? => 파라메터
-			String sql = "insert into member values (?, ?, ?, ?)";
+			String sql = "insert into member values (?, ?, ?, ?, ?)";
 
 			// sql 넘겨주기
 			ps = conn.prepareStatement(sql);
@@ -159,10 +160,10 @@ public class MemberDAO {
 			// 위에 insert 문에 () 안에 num이 맨 앞에 있어도 ?부터 인덱스 1번
 			// private으로 설정 되있어서 getter로 빼와야 해서 getId...
 			ps.setString(1, dto.getName());
-			ps.setString(2, dto.getPhoneNumber());
-			ps.setString(3, dto.getId());
-			ps.setString(4, dto.getPw());
-		
+			ps.setString(2, dto.getPhon());
+			ps.setString(3, dto.getAddress());
+			ps.setString(4, dto.getId());
+			ps.setString(5, dto.getPw());
 
 			cnt = ps.executeUpdate();
 
