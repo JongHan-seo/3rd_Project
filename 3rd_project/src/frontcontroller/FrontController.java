@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.controller.Controller;
 import com.firebase.App;
+import com.firebase.firebase_test;
 
 
 public class FrontController extends HttpServlet {
@@ -22,6 +23,16 @@ public class FrontController extends HttpServlet {
 		String reqUrl = request.getRequestURI();
 		String ctx = request.getContextPath();
 		String command = reqUrl.substring(ctx.length());
+		
+		App app = new App();
+		try {
+			app.init();
+			app.makeDatabaseConn();
+			app.select();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		Controller controller = null;
 		String nextView = null;

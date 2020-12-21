@@ -85,7 +85,7 @@
 
         var options3 = {
           title: '유해가스',
-          vAxis: {minValue: 0, maxValue: 900},
+          vAxis: {minValue: 0, maxValue: 650},
           legend: { position: 'top' },
           series: {
               0: { color: '#8C8C8C' }
