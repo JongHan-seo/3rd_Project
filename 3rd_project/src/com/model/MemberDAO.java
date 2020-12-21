@@ -97,15 +97,16 @@ public class MemberDAO {
 
 	}
 
-	public int Idcheck(String id) {
+	public int idcheck(String id, String pw) {
 		conn = getConn();
 		cnt = 0;
-		String sql = "select * from member where id=?";
+		String sql = "select * from member where id=? and pw=?";
 
 		try {
 			ps = conn.prepareStatement(sql);
 
 			ps.setString(1, id);
+			ps.setString(2, pw);
 
 			rs = ps.executeQuery();
 

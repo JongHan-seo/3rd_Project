@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class SencingDAO {Connection conn = null;
 PreparedStatement ps = null;
@@ -51,34 +52,10 @@ public void close() {
 	}
 }
 
-public int sign(SencingDTO dto) {
+public void insert(String gas, String temp, String water, String uptime) {
 	conn = getConn();
 
-	String sql = "insert into sencing values(?,?,?)";
-
-	try {
-		ps = conn.prepareStatement(sql);
-
-		
-		ps.setString(1, dto.getGas());
-		ps.setString(2, dto.getFeeding());
-		ps.setString(3, dto.getFeedtime());
-
-		cnt = ps.executeUpdate();
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	} finally {
-		close();
-	}
-	return cnt;
-
-}
-
-public void insert(String gas, String temp, String water) {
-	conn = getConn();
-
-	String sql = "insert into sencing(gas, temp, water) values(?,?,?)";
+	String sql = "insert into sencing(gas, temp, water, uptime, upsys) values(?,?,?,?,sysdate)";
 
 	try {
 		ps = conn.prepareStatement(sql);
@@ -86,6 +63,7 @@ public void insert(String gas, String temp, String water) {
 		ps.setString(1, gas);
 		ps.setString(2, temp);
 		ps.setString(3, water);
+		ps.setString(4, uptime);
 
 		cnt = ps.executeUpdate();
 	} catch (Exception e) {
@@ -97,6 +75,33 @@ public void insert(String gas, String temp, String water) {
 }
 
 
+// 최근데이터 10개 출력
+String temp = null;
+public ArrayList<SencingDTO> readData() {
+	conn = getConn();
+	String sql = "select * from(select * from(select gas,temp,water,uptime from sencing order by upsys desc) where rownum <= 10) order by rownum desc";
+	ArrayList<SencingDTO> list = new ArrayList<>();
+	
+	try {
+		ps = conn.prepareStatement(sql);
+		rs = ps.executeQuery();
+
+		while (rs.next()) {
+			sdto = new SencingDTO();
+			sdto.setUptime(rs.getString("uptime"));
+			sdto.setTemp(rs.getString("temp"));
+			sdto.setGas(rs.getString("gas"));
+			sdto.setWater(rs.getString("water"));
+			list.add(sdto);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		close();
+	}
+	return list;
+
+}
 
 
 }
