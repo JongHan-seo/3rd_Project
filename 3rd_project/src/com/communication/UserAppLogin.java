@@ -35,7 +35,6 @@ public class UserAppLogin extends HttpServlet {
 		String pw = request.getParameter("pw");
 		
 		System.out.println(id + "/" + pw);
-		boolean check = dao.login(id,pw);
 		
 
 		int check = mdao.idcheck(id, pw);
