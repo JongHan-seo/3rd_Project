@@ -53,7 +53,7 @@ public class MemberDAO {
 	public int sign(String name, String id, String pw) {
 		conn = getConn();
 		cnt = 0;
-		String sql = "insert into member values(?,'-',?,?)";
+		String sql = "insert into member(name, phone, id, pw) values(?,'-',?,?)";
 
 		try {
 			ps = conn.prepareStatement(sql);
