@@ -87,7 +87,7 @@ public class MemberDAO {
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				cnt++;
+				name = rs.getString("name");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
