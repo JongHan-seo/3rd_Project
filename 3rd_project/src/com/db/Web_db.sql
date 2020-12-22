@@ -4,10 +4,13 @@ create table member(
 name varchar2(20),
 phon varchar2(20),
 id varchar2(20) unique,
+adress varchar2(20),
 pw varchar2(20));
+
 
 insert into MEMBER(name, phon, id, pw ) values('송승룡','01000000','as','as');
 insert into MEMBER(name, phon, id, pw ) values('z','z','z','z');
+
 select * from member;
 delete from member where name is null;
 

@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.MemberDAO;
+
 import com.model.SencingDAO;
 import com.model.SencingDTO;
 
 @WebServlet("/AppLogin")
 public class UserAppLogin extends HttpServlet {
+	MemberDAO dao = new MemberDAO();
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -34,6 +36,7 @@ public class UserAppLogin extends HttpServlet {
 		
 		System.out.println(id + "/" + pw);
 		
+
 		int check = mdao.idcheck(id, pw);
 				
 		if(check == 0) {
@@ -46,6 +49,7 @@ public class UserAppLogin extends HttpServlet {
 			System.out.println(a);
 			out.print(a);
 		}
+
 		
 	}
 
