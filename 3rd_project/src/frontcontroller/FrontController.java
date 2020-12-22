@@ -24,14 +24,14 @@ public class FrontController extends HttpServlet {
 		String ctx = request.getContextPath();
 		String command = reqUrl.substring(ctx.length());
 		
-		App app = new App();
-		try {
-			app.init();
-			app.makeDatabaseConn();
-			app.select();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		App app = new App();
+//		try {
+//			app.init();
+//			app.makeDatabaseConn();
+//			app.select();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		
 		Controller controller = null;

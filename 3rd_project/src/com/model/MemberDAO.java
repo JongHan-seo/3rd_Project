@@ -49,17 +49,17 @@ public class MemberDAO {
 		}
 	}
 
-	public int sign(MemberDTO dto) {
+	public int sign(String name, String id, String pw) {
 		conn = getConn();
-
-		String sql = "insert into member values(?,?,serial_seq.nextval,?)";
+		cnt = 0;
+		String sql = "insert into member values(?,'-',?,?)";
 
 		try {
 			ps = conn.prepareStatement(sql);
 
-			ps.setString(1, dto.getId());
-			ps.setString(2, dto.getPw());
-			ps.setString(3, dto.getName());
+			ps.setString(1, name);
+			ps.setString(2, id);
+			ps.setString(3, pw);
 
 			cnt = ps.executeUpdate();
 
@@ -68,24 +68,26 @@ public class MemberDAO {
 		} finally {
 			close();
 		}
+		System.out.println(cnt);
 		return cnt;
 
 	}
 
 	String name = null;
 
-	public String login(MemberDTO dto) {
+	public String login(String id, String pw) {
 		conn = getConn();
+		cnt = 0;
 		String sql = "select name from member where id=? and pw=?";
 
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, dto.getId());
-			ps.setString(2, dto.getPw());
+			ps.setString(1, id);
+			ps.setString(2, pw);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
-				name = rs.getString("name");
+				cnt++;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -8,6 +8,7 @@
     SencingDAO sdao = new SencingDAO();
     ArrayList<SencingDTO> list = new ArrayList<>();
     list = sdao.readData();
+    String name = (String) session.getAttribute("name");
 %>
 
 
@@ -131,7 +132,7 @@
 								<header>
 									<h1>스마트 케어 봇</h1>
 								<!-- 	<p>팀 나래궁</p> -->
-									<form action="joinController" method="post">
+									<form action="/join.do" method="post">
 									<div>
 										<div class="row">
 											<div class="col-6 col-12-medium">
@@ -150,17 +151,13 @@
 											</div> -->
 											<div class="col-12">
 												<input type="submit" value="로그인" />
-												<input type="button" value="회원가입" onclick="location.href='<%=ctx%>/join.do'"/>
+												<input type="button" value="회원가입" onclick="location.href='<%=ctx%>/joinpage.do'"/>
 											</div>
 										</div>
 									</div>
 								</form>
 								
 								</header>
-								<!-- <a href="#work" class="jumplink pic">
-									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
-									<img src="./images/me.jpg" alt="" />
-								</a> -->
 							</article>
 
 						<!-- Work -->
