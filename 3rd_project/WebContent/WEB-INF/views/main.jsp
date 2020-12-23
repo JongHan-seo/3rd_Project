@@ -9,7 +9,6 @@
     ArrayList<SencingDTO> list = new ArrayList<>();
     list = sdao.readData();
     String name = (String) session.getAttribute("name");
-    System.out.println(name);
 %>
 
 
@@ -43,14 +42,14 @@
         ]);
 
         var options1 = {
-          title: '실내 온도',
+          title: '실내 온도 (℃)',
           vAxis: {minValue: 0, maxValue: 40},
           legend: { position: 'top' },
           series: {
               0: { color: '#F15F5F' }
           },
-          width: 900,
-          height: 500
+          width: 700,
+          height: 400
         };
         
         var data2 = google.visualization.arrayToDataTable([
@@ -65,10 +64,11 @@
         ]);
 
         var options2 = {
-          title: '실내 습도',
+          title: '실내 습도(％)',
+          vAxis: {minValue: 10, maxValue: 75},
           legend: { position: 'top' },
-          width: 900,
-          height: 500
+          width: 700,
+          height: 400
         };
         
         
@@ -86,14 +86,14 @@
         ]);
 
         var options3 = {
-          title: '유해가스',
+          title: '유해가스(ppm)',
           vAxis: {minValue: 0, maxValue: 650},
           legend: { position: 'top' },
           series: {
               0: { color: '#8C8C8C' }
           },
-          width: 900,
-          height: 500
+          width: 700,
+          height: 400
         };
         
         var chart1 = new google.visualization.AreaChart(document.getElementById('curve_chart1'));
@@ -130,17 +130,17 @@
 						<!-- Me -->
 							<article id="home" class="panel intro">
 								<header>
-									<h1>스마트 케어 봇</h1>
+									<h1>이동형 카메라 봇</h1>
+									<h1>Bangle</h1>
 								<!-- 	<p>팀 나래궁</p> -->
 									<form action="<%=ctx %>/login.do" method="post">
 									<div>
 										<div class="row">
+											<div class="col-6 col-12-medium"><br>
 											<div class="col-6 col-12-medium">
 												<input type="text" name="id" placeholder="ID" />
 											</div>
-											<br>
-											<div class="col-6 col-12-medium">
-											<br>
+											<div class="col-6 col-12-medium"><br>
 											</div>
 											<div class="col-6 col-12-medium">
 												<input type="text" name="pw" placeholder="PassWord" />
@@ -163,7 +163,8 @@
 							 
 										
 								<header>
-									<h2>저장된 영상 보기</h2>
+									<h2>영상 확인</h2>
+									<div><a href="#" onClick="window.open('http://192.168.137.244:8081','실시간 CCTV 확인','width=400, height=350, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">실시간 CCTV 확인</a></div>
 								</header>
 								<p>
 									
@@ -215,12 +216,14 @@
 						<!-- Contact -->
 							<article id="contact" class="panel">
 								<header>
-									<h2>CCTV 실시간 보기는 이쪽에서</h2>
+									<h2>연락처</h2>
+									<br><br>
+									<h4>광주 남구 송암로 60 CGI센터 2층 스마트그리드 인재개발원</h4>
 								</header>
 								<!-- <div><a href = http://192.168.137.244:8081/>CCTV 보기</a></div> -->
-								<div><a href="#" onClick="window.open('http://192.168.137.244:8081','CCTV 확인','width=400, height=350, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">CCTV 확인</a></div>
+								<div></div>
 								<!-- <iframe class ="frame" src="http://192.168.137.244:8081/" ></iframe> -->
-								<iframe class ="frame" src="https://dbcut.com/" ></iframe>
+								<!-- <iframe class ="frame" src="https://dbcut.com/" ></iframe> -->
 							</article>
 							
 							<!-- test -->
@@ -233,12 +236,12 @@
 								<div id="curve_chart2"></div>
 								<div id="curve_chart3"></div>
 								<p>
-									여기서 센서로 읽어들인 값들 그래프로 보여주면 될 듯.<br>
-									화재 or 유해가스 등
+									유해가스가 400ppm이상이거나 화재가 감지되면<br>
+									봇의 알람 기능이 활성화 됩니다.
 								</p>
 								<section>
 									<div class="row">
-										<div>그래프</div>
+										<!-- <div>그래프</div> -->
 									</div>
 								</section>
 							</article>
@@ -265,6 +268,7 @@
 
 
 <%if (name != null) {%>
+window.location.href = "<%=ctx%>/main.do#work";
 $("#loginhome").attr('href','#work');
 <%}%>
 
@@ -279,7 +283,7 @@ $("#logincontact").attr('href','#');
 
 	
 
-$('#login').on('click',function(){
+<%-- $('#login').on('click',function(){
 		
 		$.ajax({
 			// 눈으로 보이는 url에는 변동이 없지만 네트워크상에서는 볼 수 있어서 post방식 필요!
@@ -288,7 +292,7 @@ $('#login').on('click',function(){
 			data : 'id='+$('#id').val()+'&pw='+$('#pw').val(),
 			success : function(result){
 				console.log(result);
-				if(result === "fail"){
+				if(<%=name %> === null){
 					$('#loginck').html("잘못 입력하셨습니다.").css("color","tomato");
 				}else{
 					// alert("로그인 성공");
@@ -297,7 +301,7 @@ $('#login').on('click',function(){
 				}
 			}
 		});
-});
+}); --%>
 
 	</script>
 

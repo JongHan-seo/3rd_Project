@@ -101,11 +101,11 @@ $('#btn92').on('click',function(){
 			console.log(result);
 			if(result == 1){
 				//컨텐츠를 넣기!
-				$('#span92').html("중복된 아이디 입니다.").css("color","tomato");
+				$('#span92').html("중복된 아이디 입니다.").css("color","red");
 				
 			}else if(result == 0){
  				
-				$('#span92').html("사용가능한 아이디 입니다.").css("color","limegreen");
+				$('#span92').html("사용가능한 아이디 입니다.").css("color","black");
 			}
 			
 		}

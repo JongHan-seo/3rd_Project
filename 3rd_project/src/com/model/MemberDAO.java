@@ -132,6 +132,7 @@ public class MemberDAO {
 			ps = conn.prepareStatement(sql);
 
 			ps.setString(1, id);
+			ps.setString(2, pw);
 
 			rs = ps.executeQuery();
 
