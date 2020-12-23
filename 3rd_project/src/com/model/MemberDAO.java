@@ -80,6 +80,8 @@ public class MemberDAO {
 		conn = getConn();
 		String sql = "select name from member where id=? and pw=?";
 
+		System.out.println(id+ "/"+pw);
+		
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
@@ -98,16 +100,38 @@ public class MemberDAO {
 
 	}
 
-	public int idcheck(String id, String pw) {
+	public int idcheck(String id) {
 		conn = getConn();
 		cnt = 0;
-		String sql = "select * from member where id=? and pw=?";
+		String sql = "select * from member where id=?";
 
 		try {
 			ps = conn.prepareStatement(sql);
 
 			ps.setString(1, id);
-			ps.setString(2, pw);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				cnt++;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public int idcheck(String id, String pw) {
+		conn = getConn();
+		cnt = 0;
+		String sql = "select * from member where id=? and pw = ?";
+
+		try {
+			ps = conn.prepareStatement(sql);
+
+			ps.setString(1, id);
 
 			rs = ps.executeQuery();
 

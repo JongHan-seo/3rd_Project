@@ -9,6 +9,7 @@
     ArrayList<SencingDTO> list = new ArrayList<>();
     list = sdao.readData();
     String name = (String) session.getAttribute("name");
+    System.out.println(name);
 %>
 
 
@@ -117,11 +118,10 @@
 
 				<!-- Nav -->
 					<nav id="nav">
-						<a href="#" class="icon solid fa-home"><span>Home</span></a>
-						<a href="#work" class="icon solid fa-folder"><span>Work</span></a>
-						<a href="#test" class="icon solid fa-folder"><span>Test</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
-						<a href="https://twitter.com" class="icon brands fa-twitter"><span>Twitter</span></a>
+						<a href="#" class="icon solid fa-home" id = "loginhome"><span>Home</span></a>
+						<a href="#work" class="icon solid fa-folder" id = "loginwork"><span>Work</span></a>
+						<a href="#test" class="icon solid fa-folder" id = "logintest"><span>Test</span></a>
+						<a href="#contact" class="icon solid fa-envelope" id = "logincontact"><span>Contact</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -132,7 +132,7 @@
 								<header>
 									<h1>스마트 케어 봇</h1>
 								<!-- 	<p>팀 나래궁</p> -->
-									<form action="/join.do" method="post">
+									<form action="<%=ctx %>/login.do" method="post">
 									<div>
 										<div class="row">
 											<div class="col-6 col-12-medium">
@@ -146,13 +146,11 @@
 												<input type="text" name="pw" placeholder="PassWord" />
 											</div>
 											<br>
-											<!-- <div class="col-12">
-												<input type="text" name="subject" placeholder="길이 조절용" />
-											</div> -->
 											<div class="col-12">
-												<input type="submit" value="로그인" />
+												<input type="submit" value="로그인" id = "login" />
 												<input type="button" value="회원가입" onclick="location.href='<%=ctx%>/joinpage.do'"/>
 											</div>
+											<div class="loginck" align="right" id="loginck"></div>
 										</div>
 									</div>
 								</form>
@@ -219,7 +217,8 @@
 								<header>
 									<h2>CCTV 실시간 보기는 이쪽에서</h2>
 								</header>
-								<div><a href = http://192.168.137.244:8081/>CCTV 보기</a></div>
+								<!-- <div><a href = http://192.168.137.244:8081/>CCTV 보기</a></div> -->
+								<div><a href="#" onClick="window.open('http://192.168.137.244:8081','CCTV 확인','width=400, height=350, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">CCTV 확인</a></div>
 								<!-- <iframe class ="frame" src="http://192.168.137.244:8081/" ></iframe> -->
 								<iframe class ="frame" src="https://dbcut.com/" ></iframe>
 							</article>
@@ -251,6 +250,7 @@
 					<div id="footer">
 						<ul class="copyright">
 							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li><a href="<%=ctx%>/logout.do" id ="logout">로그아웃</a></li>
 						</ul>
 					</div>
 			</div>
@@ -260,6 +260,46 @@
 			<script src="./assets/js/breakpoints.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+
+	<script type="text/javascript">
+
+
+<%if (name != null) {%>
+$("#loginhome").attr('href','#work');
+<%}%>
+
+<%if(name == null){%>
+$("#loginwork").attr('href','#');
+$("#logintest").attr('href','#');
+$("#logincontact").attr('href','#');
+
+
+<%}%>
+
+
+	
+
+$('#login').on('click',function(){
+		
+		$.ajax({
+			// 눈으로 보이는 url에는 변동이 없지만 네트워크상에서는 볼 수 있어서 post방식 필요!
+			url : "<%=ctx%>/login.do",
+			type : "POST",
+			data : 'id='+$('#id').val()+'&pw='+$('#pw').val(),
+			success : function(result){
+				console.log(result);
+				if(result === "fail"){
+					$('#loginck').html("잘못 입력하셨습니다.").css("color","tomato");
+				}else{
+					// alert("로그인 성공");
+			
+					window.location.href = "<%=ctx%>/main.do#work";
+				}
+			}
+		});
+});
+
+	</script>
 
 
 	</body>

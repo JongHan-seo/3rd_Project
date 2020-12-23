@@ -28,6 +28,7 @@ upsys date
 select * from sencing;
 select * from(select * from(select gas,temp,water,uptime from sencing order by upsys desc) where rownum <= 10) order by rownum desc;
 delete from sencing where gas is null;
+delete from sencing where water = '0';
 delete from sencing where upsys < sysdate-1;  -- 하루 지난 데이터 삭제
 
 

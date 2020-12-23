@@ -24,9 +24,9 @@ public class LoginController implements Controller {
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		
 		MemberDAO mdao = new MemberDAO();
 		String name = mdao.login(id, pw);
-		
 		
 		if(name != null) {
 			HttpSession session = request.getSession();

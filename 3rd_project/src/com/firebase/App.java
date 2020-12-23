@@ -49,8 +49,11 @@ public class App {
                 String water = item.getData().get("water").toString();
                 String temp = item.getData().get("temp").toString();
                 String uptime = item.getData().get("uptime").toString();
-                
-                sdao.insert(gas, temp, water,uptime);
+                if(water.equals("0") || temp.equals("0")) {
+                	
+                }else {
+                	sdao.insert(gas, temp, water,uptime);
+                }
                 
             });
         });
