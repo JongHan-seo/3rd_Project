@@ -173,19 +173,12 @@ public class MemberDAO {
 
 	public int Insert(MemberDTO dto) {
 		conn = getConn();
-
-		int cnt = -1; // 실패의 의미 (=없다)
-
+		cnt = 0;
 		try {
-			// ? => 파라메터
 			String sql = "insert into member values (?, ?, ?, ?, ?)";
 
-			// sql 넘겨주기
 			ps = conn.prepareStatement(sql);
 
-			// sql 받기
-			// 위에 insert 문에 () 안에 num이 맨 앞에 있어도 ?부터 인덱스 1번
-			// private으로 설정 되있어서 getter로 빼와야 해서 getId...
 			ps.setString(1, dto.getName());
 			ps.setString(2, dto.getPhon());
 			ps.setString(3, dto.getAddress());
@@ -197,7 +190,7 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return cnt; // 성공,실패를 cnt로 (int 형) 보여줘라
+		return cnt;
 	}
 
 }

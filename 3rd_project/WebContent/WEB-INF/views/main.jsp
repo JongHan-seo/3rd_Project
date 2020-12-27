@@ -30,7 +30,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data1 = google.visualization.arrayToDataTable([
+        <%-- var data1 = google.visualization.arrayToDataTable([
         	['Time', 'Temp']
         	<%
         		for (SencingDTO sdto : list) {
@@ -39,6 +39,12 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getTemp()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
+        ]); --%>
+        
+        var data1 = google.visualization.arrayToDataTable([
+        	['Time', 'Temp'],
+        	['05시', 18],['06시', 18],['07시', 20],['08시', 21],['09시', 24],
+        	['10시', 26],['11시', 26],['12시', 25],['13시', 24],['14시', 25]
         ]);
 
         var options1 = {
@@ -52,7 +58,7 @@
           height: 400
         };
         
-        var data2 = google.visualization.arrayToDataTable([
+        <%-- var data2 = google.visualization.arrayToDataTable([
         	['Time', 'Water']
         	<%
         		for (SencingDTO sdto : list) {
@@ -61,6 +67,11 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getWater()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
+        ]); --%>
+        var data2 = google.visualization.arrayToDataTable([
+        	['Time', 'Temp'],
+        	['05시', 15],['06시', 14],['07시', 15],['08시', 15],['09시', 19],
+        	['10시', 24],['11시', 21],['12시', 20],['13시', 20],['14시', 21]
         ]);
 
         var options2 = {
@@ -72,9 +83,13 @@
         };
         
         
-        
-        
         var data3 = google.visualization.arrayToDataTable([
+        	['Time', 'Temp'],
+        	['34분', 123],['35분', 98],['36분', 102],['37분', 281],['38분', 107],
+        	['39분', 470],['40분', 482],['41분', 342],['42분', 110],['43분', 102]
+        ]);
+        
+       <%--  var data3 = google.visualization.arrayToDataTable([
         	['Time', 'Gas']
         	<%
         		for (SencingDTO sdto : list) {
@@ -83,7 +98,7 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getGas()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
-        ]);
+        ]); --%>
 
         var options3 = {
           title: '유해가스(ppm)',
@@ -130,8 +145,8 @@
 						<!-- Me -->
 							<article id="home" class="panel intro">
 								<header>
-									<h1>이동형 카메라 봇</h1>
-									<h1>Bangle</h1>
+									<h1>이동형 카메라 봇<br>Bangle</h1>
+									
 								<!-- 	<p>팀 나래궁</p> -->
 									<form action="<%=ctx %>/login.do" method="post">
 									<div>
@@ -164,7 +179,7 @@
 										
 								<header>
 									<h2>영상 확인</h2>
-									<div><a href="#" onClick="window.open('http://192.168.137.244:8081','실시간 CCTV 확인','width=400, height=350, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">실시간 CCTV 확인</a></div>
+									<div><a href="#" onClick="window.open('http://192.168.137.141:8081','실시간 CCTV 확인','width=400, height=350, toolbar=no, menubar=no, scrollbars=no, resizable=yes');return false;">실시간 CCTV 확인</a></div>
 								</header>
 								<p>
 									
@@ -172,20 +187,20 @@
 								<section>
 								 	<div class="row">
 										<div class="col-4 col-6-medium col-12-small">
-										<video class="a" src ="./video/video.mp4" controls></video> 
+										<video class="a" src ="./video/04-20201226120135.mkv" controls></video> 
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
-											<video class="a" src ="./video/video.mp4" controls></video>
+											<video class="a" src ="./video/01-20201224191142.mkv" controls></video>
 											<!-- <a href="#" class="image fit"><img src="./images/pic02.jpg" alt=""></a> -->
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
-											<video class="a" src ="./video/video.mp4" controls></video>
+											<video class="a" src ="./video/05-20201221111005.mkv" controls></video>
 											<!-- <a href="#" class="image fit"><img src="./images/pic03.jpg" alt=""></a> -->
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="./images/pic04.jpg" alt=""></a>
+											<video class="a" src ="./video/15-20201222164315.mkv" controls></video>
 										</div>
-										<div class="col-4 col-6-medium col-12-small">
+										<!-- <div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="./images/pic05.jpg" alt=""></a>
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
@@ -208,7 +223,7 @@
 										</div>
 										<div class="col-4 col-6-medium col-12-small">
 											<a href="#" class="image fit"><img src="./images/pic12.jpg" alt=""></a>
-										</div>
+										</div> -->
 									</div> 
 								</section> 
 							</article>
@@ -233,7 +248,9 @@
 									<h2>실내 정보</h2>
 								</header>
 								<div id="curve_chart1"></div>
+								<div></div>
 								<div id="curve_chart2"></div>
+								<div></div>
 								<div id="curve_chart3"></div>
 								<p>
 									유해가스가 400ppm이상이거나 화재가 감지되면<br>
@@ -269,16 +286,16 @@
 
 <%if (name != null) {%>
 window.location.href = "<%=ctx%>/main.do#work";
-$("#loginhome").attr('href','#work');
+/* $("#loginhome").attr('href','#work'); */
 <%}%>
 
-<%if(name == null){%>
+<%-- <%if(name == null){%>
 $("#loginwork").attr('href','#');
 $("#logintest").attr('href','#');
 $("#logincontact").attr('href','#');
 
 
-<%}%>
+<%}%> --%>
 
 
 	

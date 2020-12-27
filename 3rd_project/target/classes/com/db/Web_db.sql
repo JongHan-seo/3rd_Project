@@ -13,6 +13,7 @@ insert into MEMBER(name, phone, id, pw ) values('z','z','z','z');
 
 select * from member;
 delete from member where name is null;
+delete from member where id = 'bangle';
 
 drop table member cascade constraints;
 

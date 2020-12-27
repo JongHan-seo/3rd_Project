@@ -1,6 +1,8 @@
 package com.communication;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,10 @@ public class UserAppInsert extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		String name = request.getParameter("name");
 		String phon = request.getParameter("phon");
 		String address = request.getParameter("address");
@@ -45,8 +51,9 @@ public class UserAppInsert extends HttpServlet {
 		String ctx = request.getContextPath(); // = mvc1
 
 		if (cnt > 0) {
-
+			System.out.println("회원가입 성공");
 		} else {
+			System.out.println("회원가입 실패");
 
 			throw new ServletException("error");
 		}
