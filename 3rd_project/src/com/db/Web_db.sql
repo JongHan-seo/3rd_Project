@@ -10,6 +10,7 @@ pw varchar2(20));
 
 insert into MEMBER(name, phone, id, pw ) values('송승룡','01000000','as','as');
 insert into MEMBER(name, phone, id, pw ) values('z','z','z','z');
+insert into MEMBER(name, phone, id, pw ) values('zzz','zzz','admin','1234');
 
 select * from member;
 delete from member where name is null;

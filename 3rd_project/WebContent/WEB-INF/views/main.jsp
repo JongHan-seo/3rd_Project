@@ -30,7 +30,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        <%-- var data1 = google.visualization.arrayToDataTable([
+        var data1 = google.visualization.arrayToDataTable([
         	['Time', 'Temp']
         	<%
         		for (SencingDTO sdto : list) {
@@ -39,13 +39,13 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getTemp()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
-        ]); --%>
+        ]);
         
-        var data1 = google.visualization.arrayToDataTable([
+        /* var data1 = google.visualization.arrayToDataTable([
         	['Time', 'Temp'],
         	['05시', 18],['06시', 18],['07시', 20],['08시', 21],['09시', 24],
         	['10시', 26],['11시', 26],['12시', 25],['13시', 24],['14시', 25]
-        ]);
+        ]); */
 
         var options1 = {
           title: '실내 온도 (℃)',
@@ -58,7 +58,7 @@
           height: 400
         };
         
-        <%-- var data2 = google.visualization.arrayToDataTable([
+        var data2 = google.visualization.arrayToDataTable([
         	['Time', 'Water']
         	<%
         		for (SencingDTO sdto : list) {
@@ -67,12 +67,12 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getWater()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
-        ]); --%>
-        var data2 = google.visualization.arrayToDataTable([
+        ]);
+        /* var data2 = google.visualization.arrayToDataTable([
         	['Time', 'Temp'],
         	['05시', 15],['06시', 14],['07시', 15],['08시', 15],['09시', 19],
         	['10시', 24],['11시', 21],['12시', 20],['13시', 20],['14시', 21]
-        ]);
+        ]); */
 
         var options2 = {
           title: '실내 습도(％)',
@@ -83,13 +83,13 @@
         };
         
         
-        var data3 = google.visualization.arrayToDataTable([
+        /* var data3 = google.visualization.arrayToDataTable([
         	['Time', 'Temp'],
         	['34분', 123],['35분', 98],['36분', 102],['37분', 281],['38분', 107],
         	['39분', 470],['40분', 482],['41분', 342],['42분', 110],['43분', 102]
-        ]);
+        ]); */
         
-       <%--  var data3 = google.visualization.arrayToDataTable([
+       var data3 = google.visualization.arrayToDataTable([
         	['Time', 'Gas']
         	<%
         		for (SencingDTO sdto : list) {
@@ -98,7 +98,7 @@
         	,['<%= sdto.getUptime().substring(2)%>분', <%= sdto.getGas()%>]
           // 분단위는 (2), 시간단위는 (0,2)로 고칠 것! 
           <% }%>
-        ]); --%>
+        ]);
 
         var options3 = {
           title: '유해가스(ppm)',
