@@ -1,0 +1,14 @@
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+
+sudo python /home/pi/seyun/firebase_function2.py
+sudo python /home/pi/seyun/motion_activation.py
+
+
+
+/home/pi/startgoogle.sh
+
+
+sudo source /home/pi/env/bin/activate
+sudo python3 /home/pi/assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/pushtotalk.py
+
+pkill -9 -ef /home/pi/assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/pushtotalk.py
