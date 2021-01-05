@@ -297,4 +297,4 @@ void servo_drive(unsigned char deg) //서보모터를 구동하는 함수
 {
   deg = constrain(deg, 0, 180); //구동범위를 0도에서 180도로 제한
   servo.write(deg);             //제한된 범위로 서보모터 구동
-}
+} 
