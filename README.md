@@ -75,4 +75,4 @@
 8. WBS
 9. 폼보드
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc11d1d4-3085-40d4-943c-69be7e527764/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc11d1d4-3085-40d4-943c-69be7e527764/Untitled.png)
+![image](https://user-images.githubusercontent.com/71308649/103647019-f55e7480-4f9d-11eb-9de7-3e38fdc6b950.png)
