@@ -4,7 +4,9 @@
 (JSP/Servlet, Android, RaspberryPi, Arduino를 융합)<br>
 팀장(송승룡) / 팀원(김민채, 김병길, 김용오, 서종한, 진세윤)**
 
-
+<a href = "https://drive.google.com/file/d/1uJ6WVHOSTyE_5AtXwNodaWuP-pOercU3/view?usp=sharing">
+  <b>>>시연영상 바로보기 (링크)</b>
+</a><br><br>
 
 ### 1. 주제선정
 
