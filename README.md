@@ -35,7 +35,7 @@
   <img src = "https://user-images.githubusercontent.com/71308649/103646568-3a35db80-4f9d-11eb-944c-9322d84237f9.png">
 </a>
 
-[go](https://drive.google.com/file/d/1uJ6WVHOSTyE_5AtXwNodaWuP-pOercU3/view?usp=sharing){:target="_blank" rel="noopener"}
+[go](https://drive.google.com/file/d/1uJ6WVHOSTyE_5AtXwNodaWuP-pOercU3/view?usp=sharing){:target="_blank"}
 
 - 활용부품
 
